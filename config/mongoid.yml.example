@@ -1,0 +1,20 @@
+development:
+  clients:
+    default:
+      database: gipsol_development
+      hosts:
+        - localhost:27017
+
+test:
+  clients:
+    default:
+      database: gipsol_test
+      hosts:
+        - localhost:27017
+
+production:
+  clients:
+    default:
+      database: gipsol_production
+      hosts:
+        - localhost:27017

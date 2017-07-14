@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <h4>Editar Categoría</h4>
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <form action="/categories/<%= category.id %>" class="form-horizontal" method="post">
+      <input name="_method" type="hidden" value="put"></input>
+      <%= partial :'categories/form', category: category %>
+    </form>
+  </div>
+</div>
+

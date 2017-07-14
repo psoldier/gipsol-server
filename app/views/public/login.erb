@@ -1,0 +1,34 @@
+<% content_for :stylesheet do %>
+  <link href="/css/sigin.css" rel="stylesheet">
+<% end %>
+
+<div class="container">
+  <%= partial 'common/alerts' %>
+  <div class="row">
+    <div class="text-center col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+      <h2>GIPSOL</h2>
+      <%= partial 'common/alerts' %>
+      <form action="" class="form-signin" method="post">
+        <%= csrf.form_tag %>
+        <div class="form-group">
+          <input class="form-control" name="username" placeholder="Email" type="email"></input>
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="password" placeholder="Contraseña" type="password"></input>
+        </div>
+        <div class="form-group">
+          <div class="clearfix">
+            <div class="checkbox pull-left">
+              <label>
+                <input name="remember_me" type="checkbox" value="1"> Recordarme
+              </label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Ingresar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

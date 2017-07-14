@@ -1,0 +1,40 @@
+<h3>Categorías</h3>
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <a class="btn btn-primary pull-right" href="/categories/new">Nueva Categoría</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <div class="table-responsive">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th><div class="pull-left">Acciones</div></th>
+            <th>Categoría</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.each do |category| %>
+            <tr>
+              <td>
+                <div class="pull-left">
+                  <a class="btn btn-info btn-sm" href="/categories/<%= category.id %>" title="Ver"><span class="glyphicon glyphicon-eye-open"></span></a>
+                  <a class="btn btn-success btn-sm" href="/categories/<%= category.id %>/edit" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <form action="/categories/<%= category.id %>" class="btn btn-delete btn-sm" method="post" onsubmit="return confirm('Está seguro?');">
+                    <%= csrf.form_tag %>
+                    <input name="_method" type="hidden" value="delete"></input>
+                    <button class="btn btn-danger btn-sm" type="submit" title="Borrar"><span class="glyphicon glyphicon-remove"></span></button>
+                  </form>
+                </div>
+              </td>
+              <td><%= category.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <a class="btn btn-primary pull-right" href="/categories/new">Nueva Categoría</a>
+  </div>
+</div>
