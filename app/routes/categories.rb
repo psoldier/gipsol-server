@@ -22,7 +22,7 @@ class Categories < Cuba
             session[:notice] = "La Categoría fue creada con éxito"
             res.redirect "/categories", 302
           else
-            session[:error] = "Ocurrió un erro al crear la categoría - #{category_creation.errors} "
+            session[:error] = "Ocurrió un erro al crear la categoría - #{category_creation.errors}"
             render("categories/new", category: Category.new(category_creation.attributes), current_section: "categories")
           end
         rescue => e
@@ -54,7 +54,7 @@ class Categories < Cuba
                 session[:notice] = "Categoría actualizada con éxito"
                 res.redirect "/categories", 302
               else
-                session[:error] = "An error occurred while updating the category - #{category_update.errors}"
+                session[:error] = "Ocurrió un erro al editar la categoría - #{category_update.errors}"
                 render("categories/edit", category: category, current_section: "categories")
               end
             rescue => e

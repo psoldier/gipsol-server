@@ -21,6 +21,10 @@ class Users < Cuba
       run Categories
     end
 
+    on "questions" do
+      run Questions
+    end
+
     on "logout" do
       logout(User)
       session[:notice] = "Has cerrado sesión."

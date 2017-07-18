@@ -12,6 +12,7 @@ Dir["./app/helpers/**/*.rb"].each  { |rb| require rb }
 Dir["./app/models/**/*.rb"].each  { |rb| require rb }
 Dir["./app/routes/**/*.rb"].each  { |rb| require rb }
 Dir["./app/filters/**/*.rb"].sort.each    { |rb| require rb }
+Dir["./app/routes/**/*.rb"].sort.each     { |rb| require rb }
 
 # Load rack middlewares
 Cuba.use Rack::Deflater
@@ -37,7 +38,6 @@ Cuba.settings[:render][:views] = './app/views/'
 Cuba.settings[:render][:layout] = 'public/layout'
 
 
-Dir["./app/routes/**/*.rb"].sort.each     { |rb| require rb }
 Cuba.define do
   persist_session!
 
