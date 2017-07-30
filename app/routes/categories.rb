@@ -16,7 +16,7 @@ class Categories < Cuba
       end
 
       on post, root do
-        category_creation = Filters::CategoryCreation.new(req.params["category"])
+        category_creation = Filters::Category.new(req.params["category"])
         begin
           if category_creation.valid? && Category.create!(category_creation.attributes)
             session[:notice] = "La Categoría fue creada con éxito"
@@ -48,7 +48,7 @@ class Categories < Cuba
 
         on put do
           on root do
-            category_update = Filters::CategoryUpdate.new(req.params["category"])
+            category_update = Filters::Category.new(req.params["category"])
             begin
               if category_update.valid? && category.update_attributes!(category_update.attributes)
                 session[:notice] = "Categoría actualizada con éxito"

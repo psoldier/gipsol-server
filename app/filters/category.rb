@@ -1,7 +1,6 @@
 # encoding: utf-8
-
 module Filters
-  class QuestionUpdate < ::Scrivener
+  class Category < Scrivener
     attr_accessor :name
 
     def validate

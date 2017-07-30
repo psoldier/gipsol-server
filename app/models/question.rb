@@ -1,11 +1,13 @@
 class Question
   include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
   include Mongoid::Timestamps
   include Mongoid::Pagination
 
   field :title, type: String
-  embedded_in :category
+  belongs_to :category, counter_cache: true
+  #embedded_in :category
 
   embeds_many :answerds
-  accepts_nested_attributes_for :answerds
+  accepts_nested_attributes_for :answerds, limit: 4
 end

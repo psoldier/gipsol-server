@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <h4>Nueva Pregunta</h4>
+    <hr/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-lg-12">
+    <form action="/questions" class="form-horizontal" method="post">
+      <%= partial :'questions/form', question: question, categories: categories %>
+    </form>
+  </div>
+</div>
+
