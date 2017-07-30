@@ -2,7 +2,7 @@
 <div class="form-group">
   <label class="col-sm-3 control-label" for="question_category">Categoría</label>
   <div class="col-sm-5">
-    <select class="form-control" id="category_id" name="question[category_id]" required="<%= true %>">
+    <select class="form-control" id="category_id" name="question[category_id]" required>
       <option></option>
       <% categories.each do |category| %>
         <option <%= "selected" if category.id == question.category_id %> value="<%= category.id %>">
@@ -15,14 +15,24 @@
 <div class="form-group">
   <label class="col-sm-3 control-label" for="title">Pregunta</label>
   <div class="col-sm-5">
-    <input class="form-control" id="title" name="question[title]" required="<%= true %>" type="text" value="<%= question.title %>"></input>
+    <input class="form-control" id="title" name="question[title]" type="text" value="<%= question.title %>" required />
   </div>
 </div>
 <% question.answerds.each.with_index(1) do |answerd,index| %>
   <div class="form-group">
     <label class="col-sm-3 control-label" for="answerd_<%=index%>">Respuesta <%=index%></label>
     <div class="col-sm-5">
-      <input class="form-control" id="answerd_<%=index%>" name="question[answerds_attributes][][text]" required="<%= true %>" type="text" value="<%= answerd.text %>" />
+      <%if question.answerds.exists? %>
+        <input name="question[answerds_attributes][][id]" type="hidden" value="<%= answerd.id %>" />
+      <%end%>
+      <input class="form-control" id="answerd_<%=index%>" name="question[answerds_attributes][][text]" type="text" value="<%=answerd.text%>" required/>
+    </div>
+    <div class="col-sm-4">
+      <div class="radio">
+        <label>
+          <input type="radio" <%= 'checked' if answerd.value %> name="question[answerds_attributes][][value]" required/>Correcta
+        </label>
+      </div>
     </div>
   </div>  
 <%end%>
@@ -30,7 +40,7 @@
 <div class="row">
   <div class="col-md-12 col-lg-12">
     <div class="pull-right">
-      <a class="btn btn-primary" href="/categories">Volver</a>
+      <a class="btn btn-primary" href="/questions">Volver</a>
       <button class="btn btn-success" type="submit">Guardar</button>
     </div>
   </div>

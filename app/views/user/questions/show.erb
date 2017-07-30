@@ -3,8 +3,16 @@
     <h4>
       Pregunta
     </h4>
-    <div class="col-md-6 col-lg-6 col-md-offset-1 col-lg-offset-1">
+    <div class="col-md-8 col-lg-8 col-md-offset-1 col-lg-offset-1">
       <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-md-3 col-lg-3 control-label">Categoría:</label>
+          <div class="col-md-9 col-lg-9">
+            <label class="control-label">
+              <%= question.category.name %>
+            </label>
+          </div>
+        </div>
         <div class="form-group">
           <label class="col-md-3 col-lg-3 control-label">Pregunta:</label>
           <div class="col-md-9 col-lg-9">
@@ -13,6 +21,22 @@
             </label>
           </div>
         </div>
+        <% question.answerds.each.with_index(1) do |answerd,index| %>
+          <div class="form-group">
+            <label class="col-md-3 col-lg-3 control-label">Respuesta <%=index%>: </label>
+            <div class="col-md-6 col-lg-6">
+              <label class="control-label">
+                <%= answerd.text %>
+              </label>
+            </div>
+            <div class="col-md-3 col-lg-3">
+              <label class="control-label">
+                <input type="radio" <%= 'checked' if answerd.value %> disabled />
+                Correcta
+              </label>
+            </div>
+          </div>
+        <%end%>
         <div class="form-group">
           <label class="col-md-3 col-lg-3 control-label">Creada:</label>
           <div class="col-md-9 col-lg-9">

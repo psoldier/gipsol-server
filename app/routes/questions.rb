@@ -30,7 +30,7 @@ class Questions < Cuba
         end
       rescue => e
         session[:error] = "Error #{e.message} "
-        @question = Question.new(req.params["question"])
+        @question = Question.new #(req.params["question"])
         @categories = Category.all
         render("questions/new", question: @question, categories: @categories, current_section: "questions")
       end
@@ -48,23 +48,26 @@ class Questions < Cuba
       end
 
       on "edit" do
-        render("questions/edit", question: question, current_section: "questions")
+        @categories = Category.all
+        render("questions/edit", question: question, categories: @categories, current_section: "questions")
       end
 
       on put do
         on root do
           question_update = Filters::Question.new(req.params["question"])
           begin
-            if question_update.valid? && Question.update_attributes!(question_update.attributes)
+            if question_update.valid? && question.update_attributes!(question_update.attributes)
               session[:notice] = "Pregunta actualizada con éxito"
               res.redirect "/questions", 302
             else
               session[:error] = "Ocurrió un erro al actualizar la pregunta - #{question_update.errors} "
-              render("questions/edit", question: question, current_section: "questions")
+              @categories = Category.all
+              render("questions/edit", question: question, categories: @categories, current_section: "questions")
             end
           rescue => e
             session[:error] = "Error #{e.message} "
-            render("questions/edit", question: question, current_section: "questions")
+            @categories = Category.all
+            render("questions/edit", question: question, categories: @categories, current_section: "questions")
           end
         end
       end
