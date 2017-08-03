@@ -9,6 +9,7 @@ class API < Cuba
         {
           id: index,
           title: category.name,
+          source_name: category.source_name,
           score: 0,
           lifes: 2,
           maxScore: 0,
