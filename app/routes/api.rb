@@ -10,7 +10,7 @@ class API < Cuba
           id: index,
           title: category.name,
           score: 0,
-          lifes: 3,
+          lifes: 2,
           maxScore: 0,
           question_id: 1,
           questions: category.questions.entries.map.with_index(1) do |question,i|
