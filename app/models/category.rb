@@ -5,6 +5,7 @@ class Category
   include Mongoid::Pagination
 
   field :name, type: String
+  field :source_name, type: String
   
   has_many :questions
   #accepts_nested_attributes_for :questions
